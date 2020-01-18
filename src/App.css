@@ -19,3 +19,23 @@ body {
   text-align: center;
   margin-bottom: 2vh;
 }
+
+.card {
+  height: 30vh;
+  width: 30vw;
+  margin-right: 2vw;
+}
+.main {
+  display: flex;
+}
+
+.card .card-header {
+  background-color: goldenrod;
+}
+.card .card-title {
+  font-size: medium;
+}
+.card .card-footer {
+  background-color: goldenrod;
+  font-weight: bold;
+}
