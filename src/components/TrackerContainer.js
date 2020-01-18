@@ -10,16 +10,14 @@ class TrackerContainer extends Component {
   state = {
     type: "",
     desc: "",
-    amount: "",
-    accountAdded: false
+    amount: 0
   };
 
   onChange = e => {
-    console.log("onChange");
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  onClick = e => {
+  onSubmit = e => {
     e.preventDefault();
     this.props.addAccount(this.state.type, this.state.desc, this.state.amount);
     this.setState({ type: "", desc: "", amount: "" });
@@ -35,9 +33,9 @@ class TrackerContainer extends Component {
         />
         <div>
           <InputForm
-            values={this.state.account}
+            values={this.state}
             onChange={this.onChange}
-            onClick={this.onClick}
+            onSubmit={this.onSubmit}
           />
           <Tracker accounts={this.props.accounts} />
         </div>

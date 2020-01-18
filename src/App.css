@@ -39,3 +39,18 @@ body {
   background-color: goldenrod;
   font-weight: bold;
 }
+.form {
+  display: flex;
+  flex-direction: row;
+  height: 7vh;
+  width: 60vw;
+  border: 1px solid black;
+  justify-content: space-evenly;
+}
+
+.desc {
+  width: 30vw;
+}
+.amount {
+  width: 10vw;
+}
