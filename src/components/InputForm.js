@@ -5,24 +5,37 @@ export default function InputForm(props) {
   const check = <FontAwesomeIcon icon={faCheck} />;
   return (
     <div>
-      <select name="type" onChange={props.onChange}>
-        <option value=""></option>
-        <option value="inc">+</option>
-        <option value="exp">-</option>
-      </select>
-      <input
-        name="desc"
-        type="text"
-        onChange={props.onChange}
-        placeholder="Add description"
-      />
-      <input
-        name="amount"
-        type="number"
-        onChange={props.onChange}
-        placeholder="Value"
-      />
-      <button onClick={props.onClick}>{check}</button>
+      <form onSubmit={props.onSubmit} className="form">
+        <select
+          name="type"
+          onChange={props.onChange}
+          value={props.values.type}
+          required
+        >
+          <option defaultValue=""></option>
+          <option value="inc">+</option>
+          <option value="exp">-</option>
+        </select>
+        <input
+          name="desc"
+          type="text"
+          className="desc"
+          onChange={props.onChange}
+          placeholder="Add description"
+          value={props.values.desc}
+          required
+        />
+        <input
+          name="amount"
+          type="decimal"
+          className="amount"
+          onChange={props.onChange}
+          placeholder="Value"
+          value={props.values.amount}
+          required
+        />
+        <button type="submit">{check}</button>
+      </form>
     </div>
   );
 }

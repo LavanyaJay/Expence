@@ -1,7 +1,9 @@
 import React from "react";
 import { Table, Alert } from "react-bootstrap";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 export default function Tracker(props) {
+  const Trash = <FontAwesomeIcon icon={faTrash} />;
   return (
     <div>
       {props.accounts.length < 1 && (
@@ -36,6 +38,7 @@ export default function Tracker(props) {
                       {parseFloat(account.amount)}€
                     </td>
                   )}
+                  <td>{Trash}</td>
                 </tr>
               );
             })}
