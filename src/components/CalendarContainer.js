@@ -6,8 +6,12 @@ export default class CalendarContainer extends Component {
   state = {
     date: new Date()
   };
-  onChange = date => this.setState({ date });
+  onChange = date => {
+    console.log("date:", date);
+    this.setState({ date });
+  };
   onClickHandler = () => {
+    console.log("state date:", this.state.date);
     this.props.history.push(`/day/${this.state.date}`);
   };
 

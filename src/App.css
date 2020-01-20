@@ -5,7 +5,7 @@ body {
 }
 
 .header {
-  height: 43vh;
+  height: 40vh;
   background: url("https://d2x3xhvgiqkx42.cloudfront.net/c504e38b-3d99-4c48-af47-239bd1a9f548/06ac2c84-3b5a-4c8a-b5a5-3e0195748dd7/2018/02/23/55591114-741f-425f-aa35-5f435bb02821.png");
   text-align: right;
   font-family: Arial, Helvetica, sans-serif;
@@ -13,7 +13,7 @@ body {
 }
 
 .calendar {
-  height: 45vh;
+  height: 48vh;
   width: 45vw;
   margin: auto;
   text-align: center;
@@ -46,6 +46,7 @@ body {
   width: 60vw;
   border: 1px solid black;
   justify-content: space-evenly;
+  margin-bottom: 2vh;
 }
 
 .desc {

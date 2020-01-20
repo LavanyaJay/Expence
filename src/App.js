@@ -8,13 +8,16 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Container } from "react-bootstrap";
 import CalendarContainer from "./components/CalendarContainer";
 import TrackerContainer from "./components/TrackerContainer";
+import { Link } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
       <Provider store={store}>
         <header className="header">
-          <h1>EXPENCE TRACKER</h1>
+          <Link to={"/"}>
+            <h1>EXPENCE TRACKER</h1>
+          </Link>
         </header>
         <Container>
           <Route exact path="/" component={CalendarContainer}></Route>
