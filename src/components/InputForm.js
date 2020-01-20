@@ -7,22 +7,27 @@ export default function InputForm(props) {
     <div>
       <form onSubmit={props.onSubmit} className="form">
         <select
-          name="type"
+          className="desc"
+          name="category"
           onChange={props.onChange}
-          value={props.values.type}
+          placeholder="Select description"
+          value={props.values.category}
           required
         >
-          <option defaultValue=""></option>
-          <option value="inc">+</option>
-          <option value="exp">-</option>
+          <option></option>
+          {props.category.map((cat, id) => (
+            <option value={cat.id} key={id}>
+              {cat.ac_category}
+            </option>
+          ))}
         </select>
         <input
-          name="desc"
+          name="remark"
           type="text"
           className="desc"
           onChange={props.onChange}
-          placeholder="Add description"
-          value={props.values.desc}
+          placeholder="Add remark"
+          value={props.values.remark}
           required
         />
         <input

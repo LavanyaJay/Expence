@@ -1,23 +1,10 @@
-const initialState = {
-  accounts: [],
-  totalInc: 0,
-  totalExp: 0
-};
-export default (state = initialState, action) => {
+export default (state = [], action) => {
   if (action.type === "SET_ACCOUNT") {
-    console.log("inreducer", action.account.type);
-    action.account.type === "inc"
-      ? (state.totalInc = state.totalInc + parseFloat(action.account.amount))
-      : (state.totalExp = state.totalExp + parseFloat(action.account.amount));
-    console.log("inc", state.totalInc);
-    console.log("exp", state.totalExp);
-    return {
-      ...state,
-      accounts: [...state.accounts, action.account],
-
-      totalInc: state.totalInc,
-      totalExp: state.totalExp
-    };
+    return [...state, action.account];
+  } else if (action.type === "GET_ACCOUNT") {
+    return action.account;
+  } else if (action.type === "DEL_ACCOUNT") {
+    return state.filter(acc => acc.id !== action.id);
   } else {
     return state;
   }

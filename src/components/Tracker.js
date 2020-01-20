@@ -3,7 +3,7 @@ import { Table, Alert } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 export default function Tracker(props) {
-  const Trash = <FontAwesomeIcon icon={faTrash} />;
+  //console.log("props:", props);
   return (
     <div>
       {props.accounts.length < 1 && (
@@ -19,26 +19,19 @@ export default function Tracker(props) {
             {props.accounts.map(account => {
               return (
                 <tr key={account.id}>
-                  <td>{account.desc}</td>
-                  {account.type === "exp" && (
-                    <td
-                      style={{
-                        color: account.type === "exp" ? "red" : "none"
-                      }}
+                  {/* <td>{account.category.ac_category}</td> */}
+                  <td>{account.ac_remark}</td>
+
+                  <td>{parseFloat(account.ac_amount)}€</td>
+
+                  <td>
+                    <button
+                      value={account.id}
+                      onClick={() => props.onDelete(account.id)}
                     >
-                      -{account.amount}€
-                    </td>
-                  )}
-                  {account.type === "inc" && (
-                    <td
-                      style={{
-                        color: account.type === "exp" ? "red" : "none"
-                      }}
-                    >
-                      {parseFloat(account.amount)}€
-                    </td>
-                  )}
-                  <td>{Trash}</td>
+                      <FontAwesomeIcon icon={faTrash} />
+                    </button>
+                  </td>
                 </tr>
               );
             })}
