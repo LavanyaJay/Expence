@@ -28,6 +28,7 @@ class TrackerContainer extends Component {
 
   onSubmit = e => {
     e.preventDefault();
+    console.log("category:", this.state.category);
     this.props.addAccount(
       this.state.category,
       this.state.remark,
