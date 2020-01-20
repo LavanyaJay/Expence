@@ -14,17 +14,25 @@ export default class CalendarContainer extends Component {
     console.log("state date:", this.state.date);
     this.props.history.push(`/day/${this.state.date}`);
   };
+  onClickReportHandler = () => {
+    this.props.history.push(`/charts`);
+  };
 
   render() {
     return (
-      <div>
-        <Calendar
-          className="calendar"
-          onChange={this.onChange}
-          value={this.state.date}
-        />
-        <Button variant="primary" onClick={this.onClickHandler}>
-          Track
+      <div class="home">
+        <div>
+          <Calendar
+            className="calendar"
+            onChange={this.onChange}
+            value={this.state.date}
+          />
+          <Button variant="primary" onClick={this.onClickHandler}>
+            Track
+          </Button>
+        </div>
+        <Button className="button" onClick={this.onClickReportHandler}>
+          Run Report
         </Button>
       </div>
     );

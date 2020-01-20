@@ -11,6 +11,7 @@ export function setAccount(account) {
 }
 
 export function addAccount(category, remark, amount, date) {
+  console.log(category);
   return function(dispatch) {
     const data = { ac_amount: amount, ac_date: date, ac_remark: remark };
     axios
