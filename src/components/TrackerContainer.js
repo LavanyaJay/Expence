@@ -5,7 +5,7 @@ import InputForm from "./InputForm";
 import Tracker from "./Tracker";
 import { addAccount, loadAccount, delAccount } from "../actions/account";
 import { loadCategory } from "../actions/category";
-import NetIncomePerDay from "./NetIncomePerDay";
+
 class TrackerContainer extends Component {
   state = {
     category: "",
@@ -28,7 +28,7 @@ class TrackerContainer extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    console.log("category:", this.state.category);
+
     this.props.addAccount(
       this.state.category,
       this.state.remark,
@@ -45,11 +45,6 @@ class TrackerContainer extends Component {
   render() {
     return (
       <div className="main">
-        {/* <NetIncomePerDay
-          date={this.date}
-          totalInc={this.props.totalInc}
-          totalExp={this.props.totalExp}
-        /> */}
         <div>
           <InputForm
             values={this.state}
@@ -57,7 +52,11 @@ class TrackerContainer extends Component {
             onSubmit={this.onSubmit}
             category={this.props.category}
           />
-          <Tracker accounts={this.props.accounts} onDelete={this.onDelete} />
+          <Tracker
+            accounts={this.props.accounts}
+            onDelete={this.onDelete}
+            category={this.state.category}
+          />
         </div>
       </div>
     );

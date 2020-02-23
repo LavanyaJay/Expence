@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { Pie } from "react-chartjs-2";
 import { loadChartData } from "../actions/chart";
 import { loadCategory } from "../actions/category";
+import SelectInput from "./styledcomponents/SelectInput";
+import Button from "./styledcomponents/Button";
 
 class ReportContainer extends Component {
   state = {
@@ -12,10 +14,10 @@ class ReportContainer extends Component {
         data: [],
         backgroundColor: []
       }
-    ]
+    ],
+    selectedOption: ""
   };
   componentDidMount() {
-    this.props.loadChartData();
     if (this.props.category.length === 0) {
       this.props.loadCategory();
     }
@@ -38,22 +40,33 @@ class ReportContainer extends Component {
     const data = { labels: catNames, datasets: ds };
     return data;
   };
+
+  onChangeHandler = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+  onClickHandler = e => {
+    this.props.loadChartData(this.state.selectedOption);
+  };
   render() {
     const data = this.getdata();
 
-    if (data.labels.length > 0) {
-      return (
-        <div>
-          <Pie data={data} height="75%" />
-        </div>
-      );
-    } else {
-      return <div>No report found</div>;
-    }
+    return (
+      <div>
+        <SelectInput
+          value={this.state.selectedOption}
+          onChange={this.onChangeHandler}
+        />
+        <Button onClick={this.onClickHandler} />
+
+        {data.labels.length > 0 && (
+          <div>{<Pie data={data} height={120} />}</div>
+        )}
+        {data.labels.length === 0 && <div>No report found</div>}
+      </div>
+    );
   }
 }
 const mapStateToProps = reduxState => {
-  console.log("redux: ", reduxState);
   return {
     chart: reduxState.chart,
     category: reduxState.category

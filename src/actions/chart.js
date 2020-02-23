@@ -9,12 +9,12 @@ export function setChartData(chart) {
   };
 }
 
-export function loadChartData() {
+export function loadChartData(monthId) {
+  monthId = parseInt(monthId);
   return function(dispatch) {
     axios
-      .get(`http://localhost:4000/accounts/pie`)
+      .get(`http://localhost:4000/accounts/pie/${monthId}`)
       .then(response => {
-        console.log("in action: ", response.data);
         dispatch(setChartData(response.data.chart));
       })
       .catch(err => console.log(err));
