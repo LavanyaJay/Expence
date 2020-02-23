@@ -7,11 +7,9 @@ export default class CalendarContainer extends Component {
     date: new Date()
   };
   onChange = date => {
-    console.log("date:", date);
     this.setState({ date });
   };
   onClickHandler = () => {
-    console.log("state date:", this.state.date);
     this.props.history.push(`/day/${this.state.date}`);
   };
   onClickReportHandler = () => {
@@ -20,16 +18,14 @@ export default class CalendarContainer extends Component {
 
   render() {
     return (
-      <div class="home">
+      <div className="home">
         <div>
           <Calendar
             className="calendar"
             onChange={this.onChange}
             value={this.state.date}
+            onClickDay={this.onClickHandler}
           />
-          <Button variant="primary" onClick={this.onClickHandler}>
-            Track
-          </Button>
         </div>
         <Button className="button" onClick={this.onClickReportHandler}>
           Run Report
